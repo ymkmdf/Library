@@ -1,7 +1,10 @@
 package com.meipan.library._ui.activity;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,6 +12,9 @@ import android.view.ViewGroup;
 
 import com.meipan.library.api.ApiNetWork;
 import com.meipan.library.net.AppClient;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +33,10 @@ import rx.subscriptions.CompositeSubscription;
  */
 
 public class BaseActivity extends AppCompatActivity {
+    private static final String TAG = "BaseActivity";
 
     public Activity mActivity;
-    public ApiNetWork apiNetWork = AppClient.retrofit().create(ApiNetWork.class);
+    public ApiNetWork apiNetWork = AppClient.getInstance().getApiService();
     private CompositeSubscription mCompositeSubscription;
     private List<Call> calls;
 
@@ -38,6 +45,35 @@ public class BaseActivity extends AppCompatActivity {
         super.setContentView(layoutResID);
         ButterKnife.bind(this);
         mActivity = this;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //友盟
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void onEvent(Object event){}
+
+    public void replace(int id, Fragment fragment){
+        getSupportFragmentManager().beginTransaction().replace(id,fragment).commit();
+    }
+
+    public Fragment getFragmentById(int id){
+        return getSupportFragmentManager().findFragmentById(id);
     }
 
     @Override

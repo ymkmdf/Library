@@ -15,17 +15,17 @@ import rx.subscriptions.CompositeSubscription;
 
 public class BasePresenter<V> {
 
-    public V mvpView;
-    protected ApiNetWork apiNetWork;
+    public V mMvpView;
+    protected ApiNetWork mApiService;
     private CompositeSubscription mCompositeSubscription;
 
     public void attachView(V mvpView){
-        this.mvpView = mvpView;
-        apiNetWork = AppClient.retrofit().create(ApiNetWork.class);
+        this.mMvpView = mvpView;
+        mApiService = AppClient.getInstance().getApiService();
     }
 
     public void detachView(){
-        this.mvpView = null;
+        this.mMvpView = null;
         onUnsubscribe();
     }
 

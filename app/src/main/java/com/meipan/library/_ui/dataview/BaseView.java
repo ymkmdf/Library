@@ -5,6 +5,5 @@ package com.meipan.library._ui.dataview;
  */
 
 public interface BaseView {
-    void showLoading();
-    void hideLoading();
+
 }

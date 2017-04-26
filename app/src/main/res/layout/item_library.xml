@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
+    <View
+        android:id="@+id/item_xian"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="#CBCBCBCB"/>
+    <ImageView
+        android:layout_below="@+id/item_xian"
+        android:id="@+id/item_ivimage"
+        android:layout_width="80dp"
+        android:layout_margin="5dp"
+        android:layout_height="80dp"
+        android:src="@drawable/welcome_01"/>
+    <TextView
+        android:layout_below="@+id/item_xian"
+        android:id="@+id/item_tvname"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="茶书类别"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/item_ivimage"
+        android:layout_toEndOf="@+id/item_ivimage" />
+
+    <TextView
+        android:id="@+id/item_neirong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="茶具图赞茶具图赞茶具图赞茶具图赞茶具图赞茶具图赞茶具图赞茶具图赞茶经 茶具图赞"
+        android:textSize="11sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/item_tvname"
+        android:layout_alignLeft="@+id/item_tvname"
+        android:layout_alignStart="@+id/item_tvname" />
+</RelativeLayout>

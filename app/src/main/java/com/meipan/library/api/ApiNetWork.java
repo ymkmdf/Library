@@ -19,8 +19,8 @@ public interface ApiNetWork {
 
 
     String API_SERVER_URL = "http://baidu.com";
-    String API_TEST_URL = "t";
+    String API_TEST_URL = "http://baidu.com";
 
-    @GET("data/sky/{id}/appcom")
-    Observable<Model> loadModel(@Path("id") String id);
+    @GET("circles")
+    Observable<Model> getCircle();
 }

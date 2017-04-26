@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_login_number"
+        android:textSize="15sp"
+        android:hint="请输入手机号"
+        android:background="@null"
+        android:textColorHint="#CBCBCB"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/iv_login_line"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/et_login_number"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="#CBCBCB" />
+
+</RelativeLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_bg">
+
+    <include layout="@layout/layout_title"/>
+
+    <EditText
+        android:id="@+id/book_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:hint="你想要书籍的名称"
+        android:background="@drawable/white_fillet_background"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/book_content"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"
+        android:hint="书籍的大概内容，方便我们寻找"
+        android:background="@drawable/white_fillet_background"
+        android:gravity="top"
+        android:padding="10dp"
+        android:textSize="15sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="45dp"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@drawable/gray_fillet_background"
+        android:clickable="false"
+        android:text="提交"/>
+</LinearLayout>

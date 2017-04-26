@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/item_imageview"
+        android:layout_margin="10dp"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:src="@drawable/maingridview005"
+        android:scaleType="fitXY"/>
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/item_imageview"
+        android:text="天玉经"/>
+    <TextView
+        android:id="@+id/item_zuozhe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="11sp"
+        android:layout_below="@+id/item_name"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15sp"
+        android:layout_toRightOf="@+id/item_imageview"
+        android:text="作者是：XXX"/>
+    <TextView
+        android:id="@+id/item_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有100人购买"
+        android:layout_marginTop="15dp"
+        android:textSize="11sp"
+        android:layout_marginRight="5dp"
+        android:textColor="#0000FF"
+        android:layout_alignParentRight="true"/>
+    <TextView
+        android:id="@+id/item_yuedu"
+        android:layout_below="@+id/item_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="有1000人阅读"
+        android:layout_marginTop="15dp"
+        android:textSize="11sp"
+        android:layout_marginRight="5dp"
+        android:textColor="#0000FF"
+        android:layout_alignParentRight="true"/>
+
+    <TextView
+        android:id="@+id/item_jieshao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:textSize="11sp"
+        android:layout_below="@+id/item_zuozhe"
+        android:layout_toRightOf="@+id/item_imageview"
+        android:text="一本很好的书，你来看看"/>
+    <TextView
+        android:id="@+id/item_weizhi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="阅读第二页"
+        android:visibility="gone"
+        android:textSize="11sp"
+        android:layout_alignBottom="@+id/item_imageview"
+        android:layout_alignLeft="@+id/item_jieshao"
+        android:layout_alignStart="@+id/item_jieshao" />
+
+    <TextView
+        android:id="@+id/item_jindu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2%"
+        android:visibility="gone"
+        android:textSize="11sp"
+        android:layout_alignTop="@+id/item_weizhi" />
+
+</RelativeLayout>
