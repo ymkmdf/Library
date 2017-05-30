@@ -20,8 +20,13 @@ public class LogoActivity extends BaseActivity {
             switch (msg.what){
                 case 1:
                     mHandler.removeMessages(1);
-                    if (true) startActivity(new Intent(LogoActivity.this,MainActivity.class));
-                    else startActivity(new Intent(LogoActivity.this,MainActivity.class));
+                    if (true) {
+                        startActivity(new Intent(LogoActivity.this, WelcomeActivity.class));
+                        finish();
+                    }else {
+                        startActivity(new Intent(LogoActivity.this, WelcomeActivity.class));
+                        finish();
+                    }
                     break;
                 default:
                     break;

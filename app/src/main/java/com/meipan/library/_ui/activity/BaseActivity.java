@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.meipan.library.api.ApiNetWork;
+import com.meipan.library.net.ApiService;
 import com.meipan.library.net.AppClient;
 
 import org.greenrobot.eventbus.EventBus;
@@ -36,7 +36,7 @@ public class BaseActivity extends AppCompatActivity {
     private static final String TAG = "BaseActivity";
 
     public Activity mActivity;
-    public ApiNetWork apiNetWork = AppClient.getInstance().getApiService();
+    public ApiService apiNetWork = AppClient.getInstance().getApiService();
     private CompositeSubscription mCompositeSubscription;
     private List<Call> calls;
 

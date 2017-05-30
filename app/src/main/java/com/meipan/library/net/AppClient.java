@@ -1,7 +1,6 @@
 package com.meipan.library.net;
 
 import com.meipan.library.BuildConfig;
-import com.meipan.library.api.ApiNetWork;
 import com.meipan.library.app.LApplication;
 import com.meipan.library.utils.CommonUtil;
 import com.meipan.library.utils.HttpLogger;
@@ -26,14 +25,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AppClient {
 
-    private static ApiNetWork sApiService = null;
+    private static ApiService sApiService = null;
     private static Retrofit sRetrofit = null;
     private static OkHttpClient sOkHttpClient = null;
 
     private void init() {
         initOkHttp();
         initRetrofit();
-        sApiService = sRetrofit.create(ApiNetWork.class);
+        sApiService = sRetrofit.create(ApiService.class);
     }
 
     public AppClient() {
@@ -104,7 +103,7 @@ public class AppClient {
                 .build();
     }
 
-    public ApiNetWork getApiService() {
+    public ApiService getApiService() {
         return sApiService;
     }
 }

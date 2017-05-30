@@ -56,7 +56,7 @@ public class MainActivity extends MActivity<MainPresenter> implements MainView {
     @OnClick(R.id.bookshelf)
     public void onBookshelf(View view){
         mViewPager.setCurrentItem(0);
-        mvpPresenter.loadCircle();
+//        mvpPresenter.loadCircle();
         EventBus.getDefault().post(new ActionEvent("abc111"));
     }
     @OnClick(R.id.boutique)

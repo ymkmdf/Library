@@ -9,12 +9,11 @@ public class ActionEvent {
     private Object arg1;
     private Object arg2;
     private Object arg3;
+    private String mAction;
 
     public ActionEvent(String action) {
         mAction = action;
     }
-
-    private String mAction;
 
     public void setAction(String action) {
         mAction = action;

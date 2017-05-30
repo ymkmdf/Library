@@ -56,8 +56,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:recyclerview-v7:25.1.1'
+    compile 'com.android.support:support-v4:25.1.1'
+
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'me.relex:circleindicator:1.1.5@aar'
@@ -70,10 +73,8 @@ dependencies {
 
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.android.support:support-v4:25.1.1'
 
-//    compile 'com.android.support:design:25.1.1'
-//    compile 'com.android.support:cardview-v7:25.1.1'
+    compile 'com.android.support:multidex:1.0.1'
 
     compile 'com.orhanobut:logger:1.15'
 
@@ -84,7 +85,6 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.5.0'
-
     compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.2@aar'
 
     testCompile 'junit:junit:4.12'

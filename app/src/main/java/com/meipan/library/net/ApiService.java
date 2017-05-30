@@ -13,10 +13,7 @@ import rx.Observable;
 public interface ApiService {
     String HOST = "https://test.iyuanzi.com/";
 
-//    @Headers({"Accept:application/vnd.yuanzi.v4+json"
-//            , "Content-Type: application/json",
-//            "Authorization: Bearer unsign"
-//    })
-    @GET("circles")
+
+    @GET
     Observable<Model> getCircle();
 }

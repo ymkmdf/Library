@@ -1,12 +1,13 @@
 package com.meipan.library.app;
 
 import android.app.Application;
+import android.support.multidex.MultiDexApplication;
 
 /**
  * Created by gaoyan on 17/3/1.
  */
 
-public class ModelApplication extends Application {
+public class ModelApplication extends MultiDexApplication {
 
     private static final String TAG="cangshuge";
     boolean mSplashed;

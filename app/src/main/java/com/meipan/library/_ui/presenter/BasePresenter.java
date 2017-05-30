@@ -1,6 +1,6 @@
 package com.meipan.library._ui.presenter;
 
-import com.meipan.library.api.ApiNetWork;
+import com.meipan.library.net.ApiService;
 import com.meipan.library.net.AppClient;
 
 import rx.Observable;
@@ -16,7 +16,7 @@ import rx.subscriptions.CompositeSubscription;
 public class BasePresenter<V> {
 
     public V mMvpView;
-    protected ApiNetWork mApiService;
+    protected ApiService mApiService;
     private CompositeSubscription mCompositeSubscription;
 
     public void attachView(V mvpView){
