@@ -2,6 +2,7 @@ package com.meipan.library._ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.meipan.library.R;
@@ -11,6 +12,7 @@ import com.meipan.library._ui.presenter.BoutiquePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class BoutiqueActivity extends MActivity<BoutiquePresenter> implements BoutiqueView {
 
@@ -25,6 +27,11 @@ public class BoutiqueActivity extends MActivity<BoutiquePresenter> implements Bo
         mType = getIntent().getIntExtra("type",0);
         mTitleText.setText(setTitle());
         replace(R.id.comment, ClassificationFragment.newInstance(mType));
+    }
+
+    @OnClick(R.id.back_button)
+    public void onBackButton(View view){
+        onBackPressed();
     }
 
     @Override

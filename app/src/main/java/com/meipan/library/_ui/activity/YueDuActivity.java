@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,6 +25,7 @@ import android.widget.ImageView;
 
 
 import com.meipan.library.R;
+import com.meipan.library._ui.dialog.ReadingMenuDialog;
 import com.meipan.library.widget.Pager;
 import com.meipan.library.widget.PagerFactory;
 
@@ -49,6 +51,8 @@ public class YueDuActivity extends BaseActivity {
     private int[] pages ={R.drawable.ds001, R.drawable.ds002, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004, R.drawable.ds003,R.drawable.ds004};
     private int screenWidth;
     private int screenHeight;
+    private boolean isFlip;
+    private int mPageNumber = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -105,14 +109,14 @@ public class YueDuActivity extends BaseActivity {
 
         pagerFactory = new PagerFactory(getApplicationContext());
 
-        pager.setBitmaps(mCurPageBitmap, mCurPageBitmap);
-        loadImage(mCurPageCanvas, 0);
+        pager.setBitmaps(mCurPageBitmap, mNextPageBitmap);
+        loadImage(mCurPageCanvas, mPageNumber);
 
         pager.setOnTouchListener(new View.OnTouchListener() {
 
             private int count = pages.length;
-            private int currentIndex = 0;
-            private int lastIndex = 0;
+            private int currentIndex = mPageNumber;
+            private int lastIndex = mPageNumber > 0?mPageNumber - 1:0;
             private Bitmap lastBitmap = null;
 
             @Override
@@ -120,33 +124,57 @@ public class YueDuActivity extends BaseActivity {
                 boolean ret = false;
                 if (v == pager) {
                     if (e.getAction() == MotionEvent.ACTION_DOWN) {
-                        pager.calcCornerXY(e.getX(), e.getY());
 
-                        lastBitmap = currentBitmap;
-                        lastIndex = currentIndex;
+                        //判断弹出菜单 还是 翻页
+                        if (dialog(e.getX(), e.getY())){
+                            isFlip = false;
+                            Log.i("TAGGG","菜单");
+                        } else {
+                            Log.i("TAGGG","翻页");
+                            isFlip = true;
+                            pager.calcCornerXY(e.getX(), e.getY());
+//
+                            lastBitmap = currentBitmap;
+                            lastIndex = currentIndex;
 
-                        pagerFactory.onDraw(mCurPageCanvas, currentBitmap);
-                        if (pager.DragToRight()) {    // 向右滑动，显示前一页
-                            if (currentIndex == 0) return false;
-                            pager.abortAnimation();
-                            currentIndex--;
-                            loadImage(mNextPageCanvas, currentIndex);
-                        } else {        // 向左滑动，显示后一页
-                            if (currentIndex + 1 == count) return false;
-                            pager.abortAnimation();
-                            currentIndex++;
-                            loadImage(mNextPageCanvas, currentIndex);
+                            pagerFactory.onDraw(mCurPageCanvas, currentBitmap);
+                            if (pager.DragToRight()) {    // 向右滑动，显示前一页
+                                if (currentIndex == 0) return false;
+                                Log.i("TAGGG","向右滑动");
+                                pager.abortAnimation();
+                                currentIndex--;
+                                loadImage(mNextPageCanvas, currentIndex);
+                            } else {        // 向左滑动，显示后一页
+                                if (currentIndex + 1 == count) return false;
+                                Log.i("TAGGG","向左滑动");
+                                pager.abortAnimation();
+                                currentIndex++;
+                                loadImage(mNextPageCanvas, currentIndex);
+                            }
                         }
                     } else if (e.getAction() == MotionEvent.ACTION_MOVE) {
 
                     } else if (e.getAction() == MotionEvent.ACTION_UP) {
-                        if (!pager.canDragOver()) {
-                            currentIndex = lastIndex;
-                            currentBitmap = lastBitmap;
+                        if (isFlip){
+                            if (!pager.canDragOver() && isFlip) {
+                                Log.i("TAGGG","这个是什么");
+                                currentIndex = lastIndex;
+                                currentBitmap = lastBitmap;
+                                isFlip = false;
+                            }
+                        } else {
+                            if (dialog(e.getX(), e.getY()) && !isFlip){
+                                Log.i("TAGGG","菜单位置");
+                                ReadingMenuDialog dialog = ReadingMenuDialog.getInstance("ss");
+                                dialog.show(getSupportFragmentManager(),"main");
+                                isFlip = false;
+                            }
                         }
+
                     }
 
                     ret = pager.doTouchEvent(e);
+
                     return ret;
                 }
                 return false;
@@ -156,6 +184,8 @@ public class YueDuActivity extends BaseActivity {
 
 
     private void loadImage(final Canvas canvas, int index) {
+        Log.i("TAGGG","loadImage()   "+index);
+
         Bitmap bitmap = getBitmap(pages[index]);
         currentBitmap = bitmap;
         pagerFactory.onDraw(canvas, bitmap);
@@ -188,5 +218,12 @@ public class YueDuActivity extends BaseActivity {
         Bitmap ic_luncher = bm;//BitmapFactory.decodeResource(getResources(),R.drawable.welcome_bg);
         canvas.drawBitmap(ic_luncher,new Matrix(),paint);
         return alertBitmap;
+    }
+
+    public boolean dialog(float x,float y){
+        if (x > screenWidth / 3 && x < screenWidth - screenWidth / 3 && y > 200 && y < screenHeight - 200)
+            return true;
+        return false;
+
     }
 }

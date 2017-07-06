@@ -82,6 +82,7 @@ public class Pager extends View {
 
 	/** 计算拖拽点对应的拖拽脚 */
 	public void calcCornerXY(float x, float y) {
+		Log.i("TAGGG","拖动点X"+x+"    "+y   );
 		if (x <= mWidth / 2)
 			mCornerX = 0;
 		else
@@ -96,27 +97,51 @@ public class Pager extends View {
 			mIsRTandLB = false;
 	}
 
+	public boolean dialog(float x,float y){
+		if (x > mWidth / 3 && x < mWidth - mWidth / 3 && y > 200 && y < mHeight - 200)
+			return true;
+		return false;
+
+	}
+
+	boolean isMenu;
+
 	public boolean doTouchEvent(MotionEvent event) {
+
 		if (event.getAction() == MotionEvent.ACTION_MOVE) {
-			mTouch.x = event.getX();
-			mTouch.y = event.getY();
-			this.postInvalidate();
+			if (!isMenu) {
+				Log.i("TAGGG","翻页1");
+				mTouch.x = event.getX();
+				mTouch.y = event.getY();
+				this.postInvalidate();
+			}
 		}
 		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-			mTouch.x = event.getX();
-			mTouch.y = event.getY();
+			if (dialog(event.getX(),event.getY())){
+				isMenu = true;
+			}else {
+				Log.i("TAGGG","翻页2");
+				mTouch.x = event.getX();
+				mTouch.y = event.getY();
+				isMenu = false;
+			}
 			// calcCornerXY(mTouch.x, mTouch.y);
 			// this.postInvalidate();
 		}
 		if (event.getAction() == MotionEvent.ACTION_UP) {
-			if (canDragOver()) {
-				startAnimation(1200);
-			} else {
-				mTouch.x = mCornerX - 0.09f;
-				mTouch.y = mCornerY - 0.09f;
-			}
+			if (!isMenu) {
+				Log.i("TAGGG","翻页3");
+				if (canDragOver()) {
+					startAnimation(1200);
+				} else {
+					mTouch.x = mCornerX - 0.09f;
+					mTouch.y = mCornerY - 0.09f;
+				}
 
-			this.postInvalidate();
+				this.postInvalidate();
+			}else {
+				isMenu = false;
+			}
 		}
 		// return super.onTouchEvent(event);
 		return true;

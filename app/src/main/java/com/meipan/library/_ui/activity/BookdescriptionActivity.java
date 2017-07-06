@@ -32,6 +32,11 @@ public class BookdescriptionActivity extends BaseActivity {
 
     }
 
+    @OnClick(R.id.back_button)
+    public void onBackButton(View view){
+        onBackPressed();
+    }
+
 
     @OnClick({R.id.back_button, R.id.right_button, R.id.right})
     public void onClick(View view) {

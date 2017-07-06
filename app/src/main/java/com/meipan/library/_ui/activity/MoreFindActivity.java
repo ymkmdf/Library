@@ -10,6 +10,7 @@ import com.meipan.library._ui.fragment.FindBookListFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MoreFindActivity extends BaseActivity {
     @BindView(R.id.back_button)
@@ -31,5 +32,10 @@ public class MoreFindActivity extends BaseActivity {
         mTitleText.setText(title);
 
         replace(R.id.content_frame, FindBookListFragment.newInstance(getIntent().getIntExtra("type",0)));
+    }
+
+    @OnClick(R.id.back_button)
+    public void onBackButton(View view){
+        onBackPressed();
     }
 }

@@ -58,4 +58,16 @@
     <color name="ontoucha">#0A000000</color>
     <color name="gray_white_light">#cecece</color>
 
+    <!--10% ~ 90% 黑色透明度 00表示完全透明，FF就是全不透明-->
+
+    <color name="transparency1">#1A000000</color>
+    <color name="transparency2">#33000000</color>
+    <color name="transparency3">#4D000000</color>
+    <color name="transparency4">#66000000</color>
+    <color name="transparency5">#80000000</color>
+    <color name="transparency6">#99000000</color>
+    <color name="transparency7">#B3000000</color>
+    <color name="transparency8">#CC000000</color>
+    <color name="transparency9">#E6000000</color>
+
 </resources>
