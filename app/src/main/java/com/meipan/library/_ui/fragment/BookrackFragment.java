@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.meipan.library.R;
 import com.meipan.library._ui.adapter.BookrackAdapter;
 import com.meipan.library.api.model.Bookrack;
+import com.meipan.library.widget.NestedRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,8 @@ public class BookrackFragment extends BaseFragment {
     private static final String TAG = BookrackFragment.class.getSimpleName();
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
+    @BindView(R.id.refresh)
+    NestedRefreshLayout mRefresh;
 
     private BookrackAdapter mAdapter;
     private int mPage = 0;
@@ -91,6 +94,12 @@ public class BookrackFragment extends BaseFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView.setAdapter(mAdapter);
+        mRefresh.setOnRefreshListener(new NestedRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mRefresh.refreshFinish();
+            }
+        });
         refresh();
     }
 

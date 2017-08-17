@@ -2,13 +2,23 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <com.meipan.library.widget.NestedRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        app:pullMaxHeight="500dp"
+        app:pullViewHeight="60dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent"/>
+    </com.meipan.library.widget.NestedRefreshLayout>
+
+
 
     <LinearLayout
         android:id="@+id/empty_view"

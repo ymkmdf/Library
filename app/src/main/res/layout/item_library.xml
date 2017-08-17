@@ -12,8 +12,7 @@
         android:id="@+id/item_ivimage"
         android:layout_width="80dp"
         android:layout_margin="5dp"
-        android:layout_height="80dp"
-        android:src="@drawable/welcome_01"/>
+        android:layout_height="80dp"/>
     <TextView
         android:layout_below="@+id/item_xian"
         android:id="@+id/item_tvname"
