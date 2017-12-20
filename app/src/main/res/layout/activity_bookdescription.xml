@@ -231,7 +231,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/image_toux1"
             android:layout_marginLeft="15dp"
-            android:text="滚蛋吧无聊"/>
+            android:text="无聊君"/>
         <TextView
             android:id="@+id/tvneirong1"
             android:layout_width="wrap_content"
@@ -293,7 +293,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/image_toux2"
             android:layout_marginLeft="15dp"
-            android:text="滚蛋吧无聊"/>
+            android:text="无聊君"/>
         <TextView
             android:id="@+id/tvneirong2"
             android:layout_width="wrap_content"

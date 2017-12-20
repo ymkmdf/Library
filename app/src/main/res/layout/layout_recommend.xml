@@ -24,7 +24,7 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:layout_marginLeft="10dp"
-            android:text="猜你喜欢“异世大陆”类书籍——《白银之轮》 悲剧的山北伯爵著"/>
+            android:text="猜你喜欢“古诗”类书籍——《宋词》 ****爵著"/>
 
         <LinearLayout
             android:layout_width="50dp"

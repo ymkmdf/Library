@@ -1,38 +1,25 @@
 package com.meipan.library._ui.activity;
 
-import android.content.pm.ApplicationInfo;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-
 
 import com.meipan.library.R;
 import com.meipan.library._ui.dialog.ReadingMenuDialog;
 import com.meipan.library.widget.Pager;
 import com.meipan.library.widget.PagerFactory;
-
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
 
 import butterknife.ButterKnife;
 
